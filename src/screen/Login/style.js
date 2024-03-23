@@ -1,10 +1,12 @@
 import { StyleSheet } from "react-native";
-import { Scale,verticalScale,moderateScale, moderateVerticalScale } from 'react-native-size-matters'
+import { Scale,verticalScale,moderateScale, moderateVerticalScale, scale } from 'react-native-size-matters'
+import colors from "../../styles/colors";
 
 const styles = StyleSheet.create({
 
     container:{
   flex:1,
+  justifyContent:"space-between"
     },
     imgstyle:{
       height:moderateScale(200),
@@ -16,7 +18,16 @@ const styles = StyleSheet.create({
   },
   mainstyle:{
     paddingHorizontal:moderateScale(24),
-    paddingVertical:moderateVerticalScale(44)
-  }
+    paddingTop:moderateVerticalScale(44)
+  },
+  forgotview:{alignSelf:"flex-end",marginVertical:moderateVerticalScale(24)},
+
+  forgotText:{
+fontSize:scale(16),
+color:colors.themecolor,
+fontWeight:"400"
+  },
+  bottomview:{flexDirection:"row",alignItems:"center",justifyContent:"center",marginBottom:moderateScale(44),
+  marginTop:moderateVerticalScale(72)}
   })
   export default styles
