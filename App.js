@@ -3,7 +3,7 @@ import React from 'react'
 import Routes from './src/Navigation/Routes'
 const App = () => {
   return (
-    <View>
+    <View style={{flex:1}}>
 <Routes/>
     </View>
   )

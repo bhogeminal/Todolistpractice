@@ -6,11 +6,10 @@ import Authstack from './Authstack';
 const Routes = () => {
   return (
     <NavigationContainer>
-<Authstack/>
+{Authstack()}
       </NavigationContainer>
   )
 }
 
 export default Routes
 
-const styles = StyleSheet.create({})
