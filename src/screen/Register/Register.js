@@ -26,7 +26,6 @@ const Register = ({ navigation }) => {
               label="Last Name"
               placeholder="Last Name"
               inputstyle={{ flex: 1 }}
-
             />
 
           </View>
@@ -38,18 +37,19 @@ const Register = ({ navigation }) => {
           <TextInputwithLabels
             label="Date of Birth"
             placeholder=" please enter Date of Birth"
+            keyboardType="numeric"
+
           />
           <TextInputwithLabels
             label="Phone Number"
             placeholder=" please enter Phone Number"
             inputstyle={{ marginVertical: moderateVerticalScale(20) }}
-
           />
           <TextInputwithLabels
             label="Email"
             placeholder=" please enter Email"
-
-          />
+            keyboardType='email-address'
+            />
           <View style={{ flexDirection: "row" }}>
             <TextInputwithLabels
               label="Country"
@@ -87,7 +87,7 @@ const Register = ({ navigation }) => {
           </TouchableOpacity>
 
           <Buttoncomp btnText={"Continue"}
-            onPress={() => navigation.navigate(navigationStrings.HOME)}
+            onPress={() => navigation.navigate(navigationStrings.SETPASSWORD)}
             btnstyle={{ marginVertical: moderateVerticalScale(32) }}
           />
         </ScrollView>
