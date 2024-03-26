@@ -28,7 +28,8 @@ const Login = ({navigation}) => {
         rightIcon={isvisible?imagepath.HideEye:imagepath.Eye}
         onPressRight={()=>setisvisible(!isvisible)}
       />
-      <TouchableOpacity activeOpacity={0.7} style={styles.forgotview}>
+      <TouchableOpacity activeOpacity={0.7} 
+      style={styles.forgotview} onPress={()=>navigation.navigate(navigationStrings.FORGOTPASSWORD)}>
         <Text style={styles.forgotText}>Forgot Password ? </Text>
       </TouchableOpacity>
       <Buttoncomp btnText={"Login"}/>

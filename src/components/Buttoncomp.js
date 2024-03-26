@@ -1,15 +1,14 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { moderateScale, scale } from 'react-native-size-matters'
 import colors from '../styles/colors'
+import imagepath from '../constant/imagepath'
 
-const Buttoncomp = ({ btnText, btnstyle = {}, onPress }) => {
+const Buttoncomp = ({ btnText, btnstyle = {}, onPress,img }) => {
     return (
         <TouchableOpacity activeOpacity={0.8} onPress={onPress}
             style={{ ...styles.btnstyle, ...btnstyle }}>
-            <View style={{ ...styles.btnstyle, ...btnstyle }}>
-                <Text style={styles.btnText}>{btnText}</Text>
-            </View>
+           {!!img ? <Image source={img} style={{tintColor:"white",width:moderateScale(20),height:moderateScale(20)}}/> :<Text style={styles.btnText}>{btnText}</Text>}
         </TouchableOpacity>
 
     )

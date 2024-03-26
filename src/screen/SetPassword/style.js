@@ -4,15 +4,19 @@ import colors from "../../styles/colors";
 
 const styles = StyleSheet.create({
     container: {
+        flex:1,
         paddingHorizontal: moderateScale(24),
-        marginTop:moderateScale(64)
+        marginTop:moderateScale(64),
     },
-imgstyle:{marginRight:moderateScale(12),width:moderateScale(10),height:moderateScale(10)}
-   ,
+// imgstyle:{marginRight:moderateScale(12),width:moderateScale(10),height:moderateScale(10)}
+   
 btnstyle:{
 width:moderateScale(56),
 height:moderateScale(56),
-borderRadius:moderateScale(56/2)
+borderRadius:moderateScale(56/2),
+alignSelf:"flex-end",
+marginTop:moderateVerticalScale(30)
+
 }
 // headingText: {
     //     fontSize: scale(24),
