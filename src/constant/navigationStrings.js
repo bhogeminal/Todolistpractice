@@ -4,5 +4,7 @@ export default{
     FORGOTPASSWORD:"Forgotpassword",
     HOME:"Home",
     SETPASSWORD:"setpassword",
-    CHOOSEACCOUNT:"Chooseaccount"
+    CHOOSEACCOUNT:"Chooseaccount",
+    Tabroute:"Tabroute",
+    PROFILE:"profile"
 }

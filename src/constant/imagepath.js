@@ -3,5 +3,7 @@ export default {
     HideEye:require('../assets/hide.png'),
     check:require('../assets/check.png'),
     uncheck:require('../assets/round.png'),
-    right:require("../assets/right-arrow.png")
+    right:require("../assets/right-arrow.png"),
+    Home:require("../assets/home.png"),
+    Profile:require("../assets/profile.png")
 }
