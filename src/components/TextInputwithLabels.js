@@ -6,7 +6,6 @@ import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 const TextInputwithLabels = ({ label, placeholder, onchangeText,value,
     inputstyle = {}, rightIcon, onPressRight, ...props }) => {
-    console.log(onPressRight)
     
       
     return (
@@ -18,7 +17,7 @@ const TextInputwithLabels = ({ label, placeholder, onchangeText,value,
                     style={styles.inlinestyle}
                     {...props}
                  value={value}
-                 onchangeText={onchangeText}
+                 onChangeText={onchangeText}
                 />
                 {!!rightIcon ?
                     <TouchableOpacity activeOpacity={0.8}
