@@ -4,9 +4,11 @@ import { Scale, verticalScale, moderateScale, scale, moderateVerticalScale } fro
 import colors from '../styles/colors'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
-const TextInputwithLabels = ({ label, placeholder, onchangeText,
+const TextInputwithLabels = ({ label, placeholder, onchangeText,value,
     inputstyle = {}, rightIcon, onPressRight, ...props }) => {
     console.log(onPressRight)
+    
+      
     return (
         <View style={{ ...styles.inputstyle,...inputstyle }}>
             <Text style={styles.labelstyle}>{label}</Text>
@@ -15,6 +17,8 @@ const TextInputwithLabels = ({ label, placeholder, onchangeText,
                     placeholder={placeholder}
                     style={styles.inlinestyle}
                     {...props}
+                 value={value}
+                 onchangeText={onchangeText}
                 />
                 {!!rightIcon ?
                     <TouchableOpacity activeOpacity={0.8}

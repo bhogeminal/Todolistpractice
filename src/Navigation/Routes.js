@@ -7,7 +7,7 @@ import Homestack from './Homestack';
 const Routes = () => {
   return (
     <NavigationContainer>
-{true?Homestack():  Authstack()}
+{false?Homestack():  Authstack()}
       </NavigationContainer>
   )
 }

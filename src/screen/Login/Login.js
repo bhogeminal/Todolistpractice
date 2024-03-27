@@ -8,6 +8,14 @@ import Buttoncomp from '../../components/Buttoncomp'
 import navigationStrings from '../../constant/navigationStrings'
 const Login = ({navigation}) => {
   const[isvisible,setisvisible] =useState(true)
+  const[inputField,setinputField] =useState({
+    username:'',
+    password:''
+  })
+  const changeHandler=(value,field)=>{
+console.log("value",value);
+setinputField({...inputField,[field]:value})
+  }
   return (
     <View style={styles.container}>
       <View>
@@ -20,13 +28,15 @@ const Login = ({navigation}) => {
           placeholder="Enter your mail"
           inputstyle={{marginBottom: moderateVerticalScale(28)}}
           keyboardType='email-address'
-
+          value={inputField?.username}
+          onchangeText={(val)=>changeHandler(val,'username')}
           />
         <TextInputwithLabels label="Password"
           placeholder="Enter your password"
         secureTextEntry={isvisible}
         rightIcon={isvisible?imagepath.HideEye:imagepath.Eye}
         onPressRight={()=>setisvisible(!isvisible)}
+       
       />
       <TouchableOpacity activeOpacity={0.7} 
       style={styles.forgotview} onPress={()=>navigation.navigate(navigationStrings.FORGOTPASSWORD)}>
