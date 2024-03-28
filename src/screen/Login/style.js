@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   mainstyle:{
     paddingHorizontal:moderateScale(24),
-    paddingTop:moderateVerticalScale(44)
+    paddingTop:moderateVerticalScale(44),
   },
   forgotview:{alignSelf:"flex-end",marginVertical:moderateVerticalScale(24)},
 

@@ -13,7 +13,6 @@ const Authstack = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name={navigationStrings.LOGIN} component={Login} />
       <Stack.Screen name={navigationStrings.REGISTER} component={Register} />
-      <Stack.Screen name={navigationStrings.HOME} component={Home} />
       <Stack.Screen name={navigationStrings.SETPASSWORD} component={setpassword} />
       {/* <Stack.Screen name={navigationStrings.CHOOSEACCOUNT} component={ChooseAccount} /> */}
       <Stack.Screen name={navigationStrings.FORGOTPASSWORD} component={Forgotpassword} />
