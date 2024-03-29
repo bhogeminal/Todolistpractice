@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 const Homestack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name={navigationStrings.Tabroute} component={TabRoutes} />
+      <Stack.Screen name={navigationStrings.TabRoutes} component={TabRoutes} />
     
 
     </Stack.Navigator>

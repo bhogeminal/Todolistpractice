@@ -5,6 +5,7 @@ export default{
     HOME:"Home",
     SETPASSWORD:"setpassword",
     CHOOSEACCOUNT:"Chooseaccount",
-    Tabroute:"Tabroute",
-    PROFILE:"profile"
+    TabRoutes:"TabRoutes",
+    PROFILE:"profile",
+    HOMESTACK:"Homestack"
 }

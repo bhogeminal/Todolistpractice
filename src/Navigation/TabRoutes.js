@@ -12,24 +12,28 @@ const BottomTab = createBottomTabNavigator();
 
 function TabRoutes() {
   return (
-    <BottomTab.Navigator screenOptions={{headerShown:false,tabBarInactiveTintColor:colors.black,tabBarActiveTintColor:colors.themecolor}}>
-      <BottomTab.Screen name={navigationStrings.HOME} component={Home} 
-      options={{tabBarIcon:({f})=>{
-        return(
-            <Image source={imagepath.Home} 
-            
-            style={{tintColor:f?colors.themecolor:colors.black,height:moderateScale(20),width:moderateScale(20)}}/>
-        )
-      }}}
+    <BottomTab.Navigator screenOptions={{ headerShown: false, tabBarInactiveTintColor: colors.black, tabBarActiveTintColor: colors.red, tabBarLabelStyle: { fontSize: moderateScale(16) }, }}>
+      <BottomTab.Screen name={navigationStrings.HOME} component={Home}
+        options={{
+          tabBarIcon: ({ f }) => {
+            return (
+              <Image source={imagepath.Home}
+
+                style={{ tintColor: f ? colors.themecolor : colors.black, height: moderateScale(20), width: moderateScale(20) }} />
+            )
+          }
+        }}
       />
       <BottomTab.Screen name={navigationStrings.PROFILE} component={Profile}
-       options={{tabBarIcon:({f})=>{
-        return(
-            <Image source={imagepath.Profile} 
-            
-            style={{tintColor:f?colors.themecolor:colors.black,height:moderateScale(20),width:moderateScale(20)}}/>
-        )
-      }}}
+        options={{
+          tabBarIcon: ({ f }) => {
+            return (
+              <Image source={imagepath.Profile}
+
+                style={{ tintColor: f ? colors.themecolor : colors.black, height: moderateScale(20), width: moderateScale(20) }} />
+            )
+          }
+        }}
       />
 
     </BottomTab.Navigator>
