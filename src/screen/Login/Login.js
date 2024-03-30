@@ -26,7 +26,7 @@ const Login = ({ navigation }) => {
   }
   const handlesubmit = () => {
     if (validate()) {
-      Alert.alert("your name", JSON.stringify(inputField))
+      // Alert.alert("your name", JSON.stringify(inputField))
       navigation.navigate(navigationStrings.HOMESTACK, { screen: navigationStrings.HOME });
     }
 
