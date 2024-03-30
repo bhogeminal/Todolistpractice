@@ -1,69 +1,45 @@
+// screens/HomeScreen.js
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
-import Customcheckbox from '../../components/Customcheckbox';
+import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+
 const Home = () => {
   const [todos, setTodos] = useState([]);
   const [todoText, setTodoText] = useState('');
-  const [checked, setChecked] = useState(initialValue);
-  const toggleCheckbox = () => {
-    const newValue = !checked;
-    setChecked(newValue);
-    onChange(newValue);
-  };
 
   const addTodo = () => {
     if (todoText.trim() !== '') {
-      setTodos([...todos, { id: todos.length + 1, text: todoText, completed: false }]);
+      setTodos([...todos, { id: Date.now(), text: todoText }]);
       setTodoText('');
     }
   };
 
-  const toggleTodo = (id) => {
-    setTodos(todos.map(todo =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
-  };
-
-  const deleteTodo = (id) => {
+  const removeTodo = (id) => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
-  const renderItem = ({ item }) => (
-    <View style={styles.todoItem}>
-      
-      {/* <CheckBox value={item.completed} onValueChange={() => toggleTodo(item.id)} /> */}
-      <Customcheckbox
-        label="Checkbox 1"
-        initialValue={false}
-        onChange={handleCheckboxChange}
-      />
-      <Text style={[styles.todoText, { textDecorationLine: item.completed ? 'line-through' : 'none' }]}>
-        {item.text}
-      </Text>
-      <TouchableOpacity onPress={() => deleteTodo(item.id)} style={styles.deleteButton}>
-        <Text style={styles.deleteButtonText}>Delete</Text>
-      </TouchableOpacity>
-    </View>
-  );
-
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        value={todoText}
-        onChangeText={setTodoText}
-        placeholder="Enter todo"
-        onSubmitEditing={addTodo}
-      />
-      <TouchableOpacity style={styles.addButton} onPress={addTodo}>
-        <Text style={styles.addButtonText}>Add Todo</Text>
-      </TouchableOpacity>
+      <Text style={styles.title}>Todo List</Text>
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Enter todo"
+          value={todoText}
+          onChangeText={setTodoText}
+          style={styles.input}
+        />
+        <TouchableOpacity onPress={addTodo} style={styles.addButton}>
+          <Text style={styles.addButtonText}>Add</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={todos}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        style={{ marginTop: 20 }}
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => removeTodo(item.id)} style={styles.todoItem}>
+            <Text>{item.text}</Text>
+          </TouchableOpacity>
+        )}
+        keyExtractor={item => item.id.toString()}
+        style={styles.list}
       />
     </View>
   );
@@ -75,39 +51,45 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff',
   },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
   input: {
-    height: 40,
-    borderColor: 'gray',
+    flex: 1,
     borderWidth: 1,
-    marginBottom: 10,
-    paddingHorizontal: 10,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginRight: 10,
   },
   addButton: {
     backgroundColor: 'blue',
-    padding: 10,
     borderRadius: 5,
+    justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
   },
   addButtonText: {
     color: '#fff',
     fontWeight: 'bold',
   },
-  todoItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  todoText: {
+  list: {
     flex: 1,
-    marginLeft: 10,
   },
-  deleteButton: {
-    backgroundColor: 'red',
-    padding: 5,
+  todoItem: {
+    borderWidth: 1,
+    borderColor: '#ccc',
     borderRadius: 5,
-  },
-  deleteButtonText: {
-    color: '#fff',
+    padding: 10,
+    marginBottom: 10,
   },
 });
 
