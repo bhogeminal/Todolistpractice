@@ -1,96 +1,47 @@
-// screens/HomeScreen.js
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React from 'react'
+import colors from '../../styles/colors'
+import { moderateScale, moderateVerticalScale, scale } from 'react-native-size-matters'
 
+const dummydata=[{
+  id:1,
+  title:"Wash car",
+},{
+  id:2,
+  title:"Wash car",
+},{
+  id:3,
+  title:"Wash car",
+}]
 const Home = () => {
-  const [todos, setTodos] = useState([]);
-  const [todoText, setTodoText] = useState('');
-
-  const addTodo = () => {
-    if (todoText.trim() !== '') {
-      setTodos([...todos, { id: Date.now(), text: todoText }]);
-      setTodoText('');
-    }
-  };
-
-  const removeTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id));
-  };
-
+const  renderTodo=({item})=>{
+  return(
+    <View style={{backgroundColor:colors.blue,borderRadius:moderateScale(6),
+    paddingHorizontal:scale(6),paddingVertical:scale(12),marginBottom:12}}>
+      <Text style={{color:colors.white,fontSize:moderateScale(20),fontWeight:"800"}}>{item.title}</Text>
+    </View>
+)
+  }
+  
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Todo List</Text>
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Enter todo"
-          value={todoText}
-          onChangeText={setTodoText}
-          style={styles.input}
-        />
-        <TouchableOpacity onPress={addTodo} style={styles.addButton}>
-          <Text style={styles.addButtonText}>Add</Text>
-        </TouchableOpacity>
-      </View>
-      <FlatList
-        data={todos}
-        renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => removeTodo(item.id)} style={styles.todoItem}>
-            <Text>{item.text}</Text>
-          </TouchableOpacity>
-        )}
-        keyExtractor={item => item.id.toString()}
-        style={styles.list}
+    <View style={{ marginHorizontal: scale(15),marginTop:moderateVerticalScale(10) }}>
+      <TextInput style={{
+        borderWidth: 2, borderColor: colors.blue, borderRadius: moderateScale(10),
+        paddingVertical: 12, paddingHorizontal: 16
+      }}
+        placeholder='Add a Break'
+      />
+      <TouchableOpacity
+        style={{ backgroundColor: colors.black, borderRadius: 6, paddingVertical: 12, marginVertical: 24, alignItems: "center" }}>
+        <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 20 }}>Add</Text>
+      </TouchableOpacity>
+      <FlatList data={dummydata}
+      renderItem={renderTodo}
       />
     </View>
-  );
-};
+  )
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    marginBottom: 20,
-  },
-  input: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    marginRight: 10,
-  },
-  addButton: {
-    backgroundColor: 'blue',
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-  },
-  addButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  list: {
-    flex: 1,
-  },
-  todoItem: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 10,
-  },
-});
+export default Home
 
-export default Home;
+const styles = StyleSheet.create({})

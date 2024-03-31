@@ -7,5 +7,7 @@ export default{
     CHOOSEACCOUNT:"Chooseaccount",
     TabRoutes:"TabRoutes",
     PROFILE:"profile",
-    HOMESTACK:"Homestack"
+    HOMESTACK:"Homestack",
+    ADD:"add",
+    white:"white"
 }

@@ -8,7 +8,7 @@ const Routes = () => {
   console.log("[[[[[[[[[[[[")
   return (
     <NavigationContainer>
-{false? Homestack():  Authstack()}
+{true? Homestack():  Authstack()}
       </NavigationContainer>
   )
 }
