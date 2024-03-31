@@ -5,5 +5,8 @@ export default {
     uncheck:require('../assets/round.png'),
     right:require("../assets/right-arrow.png"),
     Home:require("../assets/home.png"),
-    Profile:require("../assets/profile.png")
+    Profile:require("../assets/profile.png"),
+    pencil:require('../assets/pencil.png'),
+    bin:require('../assets/bin.png'),
+
 }

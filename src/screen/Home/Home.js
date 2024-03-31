@@ -3,6 +3,7 @@ import React from 'react'
 import colors from '../../styles/colors'
 import { moderateScale, moderateVerticalScale, scale } from 'react-native-size-matters'
 
+
 const dummydata=[{
   id:1,
   title:"Wash car",
@@ -19,6 +20,8 @@ const  renderTodo=({item})=>{
     <View style={{backgroundColor:colors.blue,borderRadius:moderateScale(6),
     paddingHorizontal:scale(6),paddingVertical:scale(12),marginBottom:12}}>
       <Text style={{color:colors.white,fontSize:moderateScale(20),fontWeight:"800"}}>{item.title}</Text>
+    
+  
     </View>
 )
   }
