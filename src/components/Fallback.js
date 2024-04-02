@@ -5,13 +5,18 @@ import colors from '../styles/colors'
 
 const Fallback = () => {
   return (
-    <View style={{alignItems:"center",justifyContent:"center"}}>
-<Image  source={imagepath.pencil} style={{height:200,width:200,tintColor:colors.themecolor}}/>
-<Text style={{marginTop:20,fontWeight:"bold",fontSize:20}}>Start Adding</Text>
+    <View style={styles.container}>
+<Image  source={imagepath.pencil} style={styles.imgview}/>
+<Text style={styles.textview}>Start Adding</Text>
     </View>
   )
 }
 
 export default Fallback
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+
+  container:{alignItems:"center",justifyContent:"center"},
+  imgview:{height:200,width:200,tintColor:colors.themecolor},
+  textview:{marginTop:20,fontWeight:"bold",fontSize:20}
+})

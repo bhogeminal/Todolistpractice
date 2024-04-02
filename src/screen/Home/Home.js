@@ -4,6 +4,7 @@ import colors from '../../styles/colors'
 import { moderateScale, moderateVerticalScale, scale } from 'react-native-size-matters'
 import imagepath from '../../constant/imagepath'
 import Fallback from '../../components/Fallback'
+import styles from './style'
 
 const Home = () => {
   const [Todo, setTodo] = useState("")
@@ -38,20 +39,15 @@ const Home = () => {
   }
   const renderTodo = ({ item }) => {
     return (
-      <View style={{
-        backgroundColor: colors.blue, borderRadius: moderateScale(6), justifyContent: "space-between",
-        paddingHorizontal: scale(6), paddingVertical: scale(12), marginBottom: 12, flexDirection: "row", paddingHorizontal: scale(10)
-        , shadowColor: colors.white, shadowOpacity: 0.8,
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8, elevation: 10
-      }}>
-        <Text style={{ color: colors.white, fontSize: moderateScale(20), fontWeight: "800" }}>{item.title}</Text>
+      <View style={styles.maincontain}>
+        <Text style={styles.titleview}>{item.title}</Text>
         <View style={{ flexDirection: "row" }}>
           <TouchableOpacity onPress={() => EditTodo(item)}>
-            <Image source={imagepath.pencil} style={{ width: moderateScale(20), height: moderateScale(20), alignSelf: "center", marginHorizontal: 10 }} />
+            <Image source={imagepath.pencil} 
+            style={styles.imageview} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => deleteTodo(item.id)}>
-            <Image source={imagepath.bin} style={{ width: moderateScale(20), height: moderateScale(20), alignSelf: "center" }} />
+            <Image source={imagepath.bin} style={styles.deleteview} />
           </TouchableOpacity>
         </View>
       </View>
@@ -59,25 +55,22 @@ const Home = () => {
   }
 
   return (
-    <View style={{ marginHorizontal: scale(15), marginTop: moderateVerticalScale(10) }}>
-      <TextInput style={{
-        borderWidth: 2, borderColor: colors.blue, borderRadius: moderateScale(10),
-        paddingVertical: 12, paddingHorizontal: 16,
-      }}
+    <View style={styles.homecontain}>
+      <TextInput style={styles.inputview}
         placeholder='Add a todo'
         value={Todo}
         onChangeText={(t) => setTodo(t)}
       />
       {EditedTodo ? (
         <TouchableOpacity
-          style={{ backgroundColor: colors.black, borderRadius: 6, paddingVertical: 12, marginVertical: 24, alignItems: "center" }}>
-          <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 20 }}
+          style={styles.btntext}>
+          <Text style={styles.btnupdate}
             onPress={() => updatetodo()}
           >save</Text>
         </TouchableOpacity>
       ) : (<TouchableOpacity
-        style={{ backgroundColor: colors.black, borderRadius: 6, paddingVertical: 12, marginVertical: 24, alignItems: "center" }}>
-        <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 20 }}
+        style={styles.addview}>
+        <Text style={styles.addtodotext}
           onPress={() => addtodo()}
         >Add</Text>
       </TouchableOpacity>
@@ -94,4 +87,3 @@ const Home = () => {
 
 export default Home
 
-const styles = StyleSheet.create({})

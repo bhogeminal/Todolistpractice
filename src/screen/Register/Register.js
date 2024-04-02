@@ -77,7 +77,7 @@ const Register = ({ navigation }) => {
             inputstyle={{ marginVertical: moderateVerticalScale(20) }}
 
           />
-          <TouchableOpacity style={{ marginBottom: moderateVerticalScale(28), flexDirection: "row", alignItems: "center" }}
+          <TouchableOpacity style={styles.checkimg}
             activeOpacity={0.8} onPress={() => setisTrue(!isTrue)}
           >
             <Image source={isTrue ? imagepath.check : imagepath.uncheck}

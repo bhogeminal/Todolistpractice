@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: moderateScale(24),
 
     },
-imgstyle:    {marginRight:moderateScale(12),width:moderateScale(10),height:moderateScale(10)}
+imgstyle:    {marginRight:moderateScale(12),width:moderateScale(10),height:moderateScale(10)},
+checkimg:{ marginBottom: moderateVerticalScale(28), flexDirection: "row", alignItems: "center" }
     // headingText: {
     //     fontSize: scale(24),
     //     textTransform: 'uppercase',

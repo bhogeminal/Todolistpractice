@@ -17,7 +17,8 @@ borderRadius:moderateScale(56/2),
 alignSelf:"flex-end",
 marginTop:moderateVerticalScale(30)
 
-}
+},
+setpass:{ fontSize: moderateScale(20), fontWeight: "bold", marginBottom: moderateScale(20) }
 // headingText: {
     //     fontSize: scale(24),
     //     textTransform: 'uppercase',

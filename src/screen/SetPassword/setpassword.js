@@ -14,7 +14,7 @@ const Setpassword = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-          <Text style={{ fontSize: moderateScale(20), fontWeight: "bold", marginBottom: moderateScale(20) }}>Set Password</Text>
+          <Text style={styles.setpass}>Set Password</Text>
             <TextInputwithLabels
               label="Password"
               placeholder="Please Enter password"
