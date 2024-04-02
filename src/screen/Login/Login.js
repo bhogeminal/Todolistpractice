@@ -51,7 +51,8 @@ const Login = ({ navigation }) => {
             onchangeText={(val) => changeHandler(val, 'username')}
           />
           {error.username ? (<Text style={{ color: colors.red }}>{error.username}</Text>) : null}
-          <TextInputwithLabels label="Password"
+          <TextInputwithLabels 
+          label="Password"
             placehrolder="Enter your password"
             secureTextEntry={isvisible}
             inputstyle={{marginTop:moderateScale(10)}}

@@ -7,8 +7,57 @@ import Buttoncomp from '../../components/Buttoncomp'
 import navigationStrings from '../../constant/navigationStrings'
 import styles from './style'
 import imagepath from '../../constant/imagepath'
+import colors from '../../styles/colors'
 const Register = ({ navigation }) => {
   const [isTrue, setisTrue] = useState(true)
+  const [inputField, setinputField] = useState({
+    username: "",
+    Password: "",
+    DateBirth: "",
+    Phone: "",
+    Email: "",
+    Password: "",
+    Country: ""
+  })
+  const [error, seterror] = useState({})
+  const validate = () => {
+    let ob = {}
+    if (!inputField.username) {
+      ob.username = "username is required"
+    }
+    if (!inputField.lastname) {
+      ob.Password = "lastname is req"
+    }
+    if (!inputField.DateBirth) {
+      ob.Password = "Date of Birth is req"
+    }
+    if (!inputField.Phone) {
+      ob.Password = "Phone is req"
+    }
+    if (!inputField.Email) {
+      ob.Password = "Email is req"
+    }
+    if (!inputField.Password) {
+      ob.Password = "password is req"
+    }
+    if (!inputField.Country) {
+      ob.Password = "Country is req"
+    }
+    if (!inputField.postalcode) {
+      ob.Password = "postalcode is req"
+    }
+    if (!inputField.Address) {
+      ob.Password = "Address is req"
+    }
+    seterror(ob)
+    return Object.keys(ob).length === 0
+  }
+
+  const handleregister = () => {
+    if (validate()) {
+      navigation.navigate(navigationStrings.SETPASSWORD, { screen: navigationStrings.SETPASSWORD })
+    }
+  }
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -29,11 +78,15 @@ const Register = ({ navigation }) => {
             />
 
           </View>
+          {error.username ? <Text style={{ color: colors.red }}>{error.username}</Text> : null}
+          {error.lastname ? <Text style={{ color: colors.red }}>{error.lastname}</Text> : null}
+
           <TextInputwithLabels
             label=" Name"
             placeholder="Last Name"
             inputstyle={{ marginVertical: moderateVerticalScale(20) }}
           />
+
           <TextInputwithLabels
             label="Date of Birth"
             placeholder=" please enter Date of Birth"
@@ -49,7 +102,7 @@ const Register = ({ navigation }) => {
             label="Email"
             placeholder=" please enter Email"
             keyboardType='email-address'
-            />
+          />
           <View style={{ flexDirection: "row" }}>
             <TextInputwithLabels
               label="Country"
@@ -87,7 +140,7 @@ const Register = ({ navigation }) => {
           </TouchableOpacity>
 
           <Buttoncomp btnText={"Continue"}
-            onPress={() => navigation.navigate(navigationStrings.SETPASSWORD)}
+            onPress={handleregister}
             btnstyle={{ marginVertical: moderateVerticalScale(32) }}
           />
         </ScrollView>
