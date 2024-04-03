@@ -51,11 +51,11 @@ const Register = ({ navigation }) => {
       navigation.navigate(navigationStrings.SETPASSWORD, { screen: navigationStrings.SETPASSWORD })
     }
   }
-  const changeHandler = (field, value) => {
+  const changeHandler = (value, field) => {
+    console.log("value", value);
     setinputField({ ...inputField, [field]: value })
-    seterror({ ...error, [field]: "" })
+    seterror({ ...error, [field]:""})
   }
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -144,7 +144,6 @@ const Register = ({ navigation }) => {
             onchangeText={(val) => changeHandler(val, 'Address')}
 
           />
-          {error.Address ? <Text style={{ color: colors.red }}>{error.Address}</Text> : null}
 
           <TouchableOpacity style={styles.checkimg}
             activeOpacity={0.8} onPress={() => setisTrue(!isTrue)}
