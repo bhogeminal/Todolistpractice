@@ -19,8 +19,9 @@ const Register = ({ navigation }) => {
     Phone: "",
     Email: "",
     postalcode: "",
-    Country: "", 
-    Address: ""
+    Country: "",
+    Address: "",
+    Referral:""
   })
   const [error, seterror] = useState({})
 
@@ -35,18 +36,25 @@ const Register = ({ navigation }) => {
     if (!inputField.Country) ob.Country = "Country is required"
     if (!inputField.postalcode) ob.postalcode = "Postal code is required"
     if (!inputField.Address) ob.Address = "Address is required"
-    
+    if (!inputField.Referral) ob.Address = "Referral is required"
+
     seterror(ob)
     return Object.keys(ob).length === 0
   }
 
   const handleregister = () => {
+    console.log("Register button pressed");
     if (validate()) {
-      navigation.navigate(navigationStrings.SETPASSWORD, { screen: navigationStrings.SETPASSWORD })
+      navigation.navigate(navigationStrings.SETPASSWORD)
+      console.log("navigation",navigation);
+    }
+    else{
+      console.log("asa")
     }
   }
 
   const changeHandler = (value, field) => {
+    console.log("value", value);
     setinputField({ ...inputField, [field]: value })
     seterror({ ...error, [field]: "" })
   }
@@ -62,17 +70,20 @@ const Register = ({ navigation }) => {
               placeholder="First Name"
               inputstyle={{ flex: 1 }}
               multiline={true}
-              onChangeText={(val) => changeHandler(val, 'username')}
+              value={inputField?.username}
+              onchangeText={(val) => changeHandler(val, 'username')}
+
             />
             <View style={{ marginHorizontal: moderateScale(8) }}></View>
             <TextInputwithLabels
               label="Last Name"
               placeholder="Last Name"
               inputstyle={{ flex: 1 }}
-              onChangeText={(val) => changeHandler(val, 'lastname')}
+              value={inputField?.lastname}
+              onchangeText={(val) => changeHandler(val, 'lastname')}
             />
           </View>
-          <View style={{flexDirection:"row",justifyContent:"space-between"}}>
+          <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
             <Text style={{ color: colors.red }}>{error.username}</Text>
             <Text style={{ color: colors.red }}>{error.lastname}</Text>
           </View>
@@ -80,15 +91,17 @@ const Register = ({ navigation }) => {
             label="Date of Birth"
             placeholder="Enter Date of Birth"
             keyboardType="numeric"
-            onChangeText={(val) => changeHandler(val, 'DateBirth')}
+            value={inputField?.DateBirth}
+            onchangeText={(val) => changeHandler(val, 'DateBirth')}
           />
           <Text style={{ color: colors.red }}>{error.DateBirth}</Text>
 
           <TextInputwithLabels
             label="Phone Number"
             placeholder="Enter Phone Number"
+            value={inputField?.Phone}
             inputstyle={{ marginVertical: moderateVerticalScale(20) }}
-            onChangeText={(val) => changeHandler(val, 'Phone')}
+            onchangeText={(val) => changeHandler(val, 'Phone')}
           />
           <Text style={{ color: colors.red }}>{error.Phone}</Text>
 
@@ -96,45 +109,51 @@ const Register = ({ navigation }) => {
             label="Email"
             placeholder="Enter Email"
             keyboardType='email-address'
-            onChangeText={(val) => changeHandler(val, 'Email')}
+            value={inputField?.Email}
+            onchangeText={(val) => changeHandler(val, 'Email')}
           />
           <Text style={{ color: colors.red }}>{error.Email}</Text>
 
-          <View style={{ flexDirection: "row"}}>
+          <View style={{ flexDirection: "row" }}>
             <TextInputwithLabels
               label="Country"
               placeholder="Country Name"
-              inputstyle={{flex: 1, marginVertical: moderateVerticalScale(20) }}
+              inputstyle={{ flex: 1, marginVertical: moderateVerticalScale(20) }}
               multiline={true}
-              onChangeText={(val) => changeHandler(val, 'Country')}
+              value={inputField?.Country}
+              onchangeText={(val) => changeHandler(val, 'Country')}
             />
             <TextInputwithLabels
               label="Postal code"
               placeholder="Postal code"
+              value={inputField?.postalcode}
               inputstyle={{ flex: 1, marginVertical: moderateVerticalScale(20) }}
-              onChangeText={(val) => changeHandler(val, 'postalcode')}
+              onchangeText={(val) => changeHandler(val, 'postalcode')}
             />
           </View>
-          <View style={{flexDirection:"row",justifyContent:"space-between"}}>
+          <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
 
-          <Text style={{ color: colors.red }}>{error.Country}</Text>
+            <Text style={{ color: colors.red }}>{error.Country}</Text>
 
             <Text style={{ color: colors.red }}>{error.postalcode}</Text>
-            </View>
+          </View>
           <TextInputwithLabels
             label="Address"
             placeholder="Enter Address"
-            inputstyle={{ flex: 1, marginVertical: moderateVerticalScale(20) }}
-            onChangeText={(val) => changeHandler(val, 'Address')}
+            value={inputField?.Address}
+            inputstyle={{ marginVertical: moderateVerticalScale(20) }}
+            onchangeText={(val) => changeHandler(val, 'Address')}
           />
-          <Text style={{ color: colors.red }}>{error.Address}</Text>
+          {error.Address?<Text style={{ color: colors.red }}>{error.Address}</Text>:null}
 
           <TextInputwithLabels
             label="Referral code"
             placeholder="Enter Referral code"
+            value={inputField?.Referral}
             inputstyle={{ marginVertical: moderateVerticalScale(20) }}
-            onChangeText={(val) => changeHandler(val, 'ReferralCode')}
+            onchangeText={(val) => changeHandler(val, 'Referral')}
           />
+          {error.Referral?<Text style={{ color: colors.red }}>{error.Referral}</Text>:null}
 
           <TouchableOpacity style={styles.checkimg}
             activeOpacity={0.8} onPress={() => setisTrue(!isTrue)}
@@ -147,6 +166,7 @@ const Register = ({ navigation }) => {
           <Buttoncomp btnText={"Continue"}
             onPress={handleregister}
             btnstyle={{ marginVertical: moderateVerticalScale(32) }}
+          
           />
         </ScrollView>
       </View>

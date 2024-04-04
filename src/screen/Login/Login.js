@@ -10,14 +10,14 @@ import colors from '../../styles/colors'
 const Login = ({ navigation }) => {
   const [isvisible, setisvisible] = useState(true)
   const [inputField, setinputField] = useState({
-    username: '',
+    email: '',
     password: ''
   })
   const [error, seterror] = useState({});
   const validate = () => {
     let ob = {}
-    if (!inputField.username)
-      ob.username = "Username is required"
+    if (!inputField.email)
+      ob.email = "email is required"
     if (!inputField.password)
       ob.password = "Password is required"
     seterror(ob)
@@ -47,10 +47,10 @@ const Login = ({ navigation }) => {
           <TextInputwithLabels label="Email Address"
             placeholder="Enter your mail"
             keyboardType='email-address'
-            value={inputField?.username}
-            onchangeText={(val) => changeHandler(val, 'username')}
+            value={inputField?.email}
+            onchangeText={(val) => changeHandler(val, 'email')}
           />
-          {error.username ? (<Text style={{ color: colors.red }}>{error.username}</Text>) : null}
+          {error.email ? (<Text style={{ color: colors.red }}>{error.email}</Text>) : null}
           <TextInputwithLabels
             label="Password"
             placehrolder="Enter your password"
