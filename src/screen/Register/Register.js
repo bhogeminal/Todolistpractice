@@ -8,6 +8,7 @@ import navigationStrings from '../../constant/navigationStrings'
 import styles from './style'
 import imagepath from '../../constant/imagepath'
 import colors from '../../styles/colors'
+
 const Register = ({ navigation }) => {
   const [isTrue, setisTrue] = useState(true)
   const [inputField, setinputField] = useState({
@@ -18,32 +19,25 @@ const Register = ({ navigation }) => {
     Phone: "",
     Email: "",
     postalcode: "",
-    Country: "", Address: ""
+    Country: "", 
+    Address: ""
   })
   const [error, seterror] = useState({})
+
   const validate = () => {
     let ob = {}
-    if (!inputField.username)
-      ob.username = "username is required"
-    if (!inputField.lastname)
-      ob.lastname = "lastname is req"
-    if (!inputField.DateBirth)
-      ob.DateBirth = "Date of Birth is req"
-    if (!inputField.Phone)
-      ob.Phone = "Phone is req"
-    if (!inputField.Email)
-      ob.Email = "Email is req"
-    if (!inputField.Password)
-      ob.Password = "password is req"
-    if (!inputField.Country)
-      ob.Country = "Country is req"
-    if (!inputField.postalcode)
-      ob.postalcode = "postalcode is req"
-    if (!inputField.Address)
-      ob.Address = "Address is req"
+    if (!inputField.username) ob.username = "Username is required"
+    if (!inputField.lastname) ob.lastname = "Last name is required"
+    if (!inputField.DateBirth) ob.DateBirth = "Date of Birth is required"
+    if (!inputField.Phone) ob.Phone = "Phone number is required"
+    if (!inputField.Email) ob.Email = "Email is required"
+    if (!inputField.Password) ob.Password = "Password is required"
+    if (!inputField.Country) ob.Country = "Country is required"
+    if (!inputField.postalcode) ob.postalcode = "Postal code is required"
+    if (!inputField.Address) ob.Address = "Address is required"
+    
     seterror(ob)
     return Object.keys(ob).length === 0
-
   }
 
   const handleregister = () => {
@@ -51,11 +45,12 @@ const Register = ({ navigation }) => {
       navigation.navigate(navigationStrings.SETPASSWORD, { screen: navigationStrings.SETPASSWORD })
     }
   }
+
   const changeHandler = (value, field) => {
-    console.log("value", value);
     setinputField({ ...inputField, [field]: value })
-    seterror({ ...error, [field]:""})
+    seterror({ ...error, [field]: "" })
   }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -64,92 +59,87 @@ const Register = ({ navigation }) => {
           <View style={{ flexDirection: "row" }}>
             <TextInputwithLabels
               label="First Name"
-              placeholder="Please Enter your First Name"
+              placeholder="First Name"
               inputstyle={{ flex: 1 }}
               multiline={true}
-              onchangeText={(val) => changeHandler(val, 'username')}
+              onChangeText={(val) => changeHandler(val, 'username')}
             />
             <View style={{ marginHorizontal: moderateScale(8) }}></View>
             <TextInputwithLabels
               label="Last Name"
               placeholder="Last Name"
               inputstyle={{ flex: 1 }}
-              onchangeText={(val) => changeHandler(val, 'lastname')}
-
+              onChangeText={(val) => changeHandler(val, 'lastname')}
             />
-
           </View>
-          {error.username ? <Text style={{ color: colors.red }}>{error.username}</Text> : null}
-          {error.lastname ? <Text style={{ color: colors.red }}>{error.lastname}</Text> : null}
+          <View style={{flexDirection:"row",justifyContent:"space-between"}}>
+            <Text style={{ color: colors.red }}>{error.username}</Text>
+            <Text style={{ color: colors.red }}>{error.lastname}</Text>
+          </View>
           <TextInputwithLabels
             label="Date of Birth"
-            placeholder=" please enter Date of Birth"
+            placeholder="Enter Date of Birth"
             keyboardType="numeric"
-            onchangeText={(val) => changeHandler(val, 'DateBirth')}
+            onChangeText={(val) => changeHandler(val, 'DateBirth')}
           />
-          {error.DateBirth ? <Text style={{ color: colors.red }}>{error.DateBirth}</Text> : null}
+          <Text style={{ color: colors.red }}>{error.DateBirth}</Text>
 
           <TextInputwithLabels
             label="Phone Number"
-            placeholder=" please enter Phone Number"
+            placeholder="Enter Phone Number"
             inputstyle={{ marginVertical: moderateVerticalScale(20) }}
-            onchangeText={(val) => changeHandler(val, 'Phone')}
-
+            onChangeText={(val) => changeHandler(val, 'Phone')}
           />
-          {error.Phone ? <Text style={{ color: colors.red }}>{error.Phone}</Text> : null}
+          <Text style={{ color: colors.red }}>{error.Phone}</Text>
 
           <TextInputwithLabels
             label="Email"
-            placeholder=" please enter Email"
+            placeholder="Enter Email"
             keyboardType='email-address'
-            onchangeText={(val) => changeHandler(val, 'Email')}
-
+            onChangeText={(val) => changeHandler(val, 'Email')}
           />
-          {error.Email ? <Text style={{ color: colors.red }}>{error.Email}</Text> : null}
+          <Text style={{ color: colors.red }}>{error.Email}</Text>
 
-          <View style={{ flexDirection: "row" }}>
+          <View style={{ flexDirection: "row"}}>
             <TextInputwithLabels
               label="Country"
-              placeholder="Please Enter your country Name"
-              inputstyle={{ flex: 1, marginVertical: moderateVerticalScale(20) }}
+              placeholder="Country Name"
+              inputstyle={{flex: 1, marginVertical: moderateVerticalScale(20) }}
               multiline={true}
-              onchangeText={(val) => changeHandler(val, 'Country')}
-
+              onChangeText={(val) => changeHandler(val, 'Country')}
             />
-            {error.Email ? <Text style={{ color: colors.red }}>{error.Email}</Text> : null}
-
-            <View style={{ marginHorizontal: moderateScale(8) }}></View>
             <TextInputwithLabels
               label="Postal code"
               placeholder="Postal code"
               inputstyle={{ flex: 1, marginVertical: moderateVerticalScale(20) }}
-              onchangeText={(val) => changeHandler(val, 'postalcode')}
-
+              onChangeText={(val) => changeHandler(val, 'postalcode')}
             />
-            {error.postalcode ? <Text style={{ color: colors.red }}>{error.postalcode}</Text> : null}
-
           </View>
+          <View style={{flexDirection:"row",justifyContent:"space-between"}}>
+
+          <Text style={{ color: colors.red }}>{error.Country}</Text>
+
+            <Text style={{ color: colors.red }}>{error.postalcode}</Text>
+            </View>
           <TextInputwithLabels
             label="Address"
-            placeholder="please enter address"
+            placeholder="Enter Address"
             inputstyle={{ flex: 1, marginVertical: moderateVerticalScale(20) }}
-            onchangeText={(val) => changeHandler(val, 'Address')}
+            onChangeText={(val) => changeHandler(val, 'Address')}
           />
-          {error.Address ? <Text style={{ color: colors.red }}>{error.Address}</Text> : null}
+          <Text style={{ color: colors.red }}>{error.Address}</Text>
 
           <TextInputwithLabels
             label="Referral code"
-            placeholder="please enter code"
+            placeholder="Enter Referral code"
             inputstyle={{ marginVertical: moderateVerticalScale(20) }}
-            onchangeText={(val) => changeHandler(val, 'Address')}
-
+            onChangeText={(val) => changeHandler(val, 'ReferralCode')}
           />
 
           <TouchableOpacity style={styles.checkimg}
             activeOpacity={0.8} onPress={() => setisTrue(!isTrue)}
           >
-            <Image source={isTrue ? imagepath.check : imagepath.uncheck}
-
+            <Image source={isTrue ? imagepath.uncheck : imagepath.check}
               style={styles.imgstyle} />
             <Text style={{ color: "black" }}>By Logging in,you agree to Terms and Condition,Privacy Policy</Text>
           </TouchableOpacity>

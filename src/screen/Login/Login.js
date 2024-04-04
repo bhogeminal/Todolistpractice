@@ -16,13 +16,13 @@ const Login = ({ navigation }) => {
   const [error, seterror] = useState({});
   const validate = () => {
     let ob = {}
-    if (!inputField.username) 
+    if (!inputField.username)
       ob.username = "Username is required"
-    if(!inputField.password)
+    if (!inputField.password)
       ob.password = "Password is required"
-      seterror(ob)
-      return Object.keys(ob).length === 0;
-    
+    seterror(ob)
+    return Object.keys(ob).length === 0;
+
   }
   const handlesubmit = () => {
     if (validate()) {
@@ -34,7 +34,7 @@ const Login = ({ navigation }) => {
   const changeHandler = (value, field) => {
     console.log("value", value);
     setinputField({ ...inputField, [field]: value })
-    seterror({ ...error, [field]:""})
+    seterror({ ...error, [field]: "" })
   }
   return (
     <View style={styles.container}>
@@ -51,17 +51,17 @@ const Login = ({ navigation }) => {
             onchangeText={(val) => changeHandler(val, 'username')}
           />
           {error.username ? (<Text style={{ color: colors.red }}>{error.username}</Text>) : null}
-          <TextInputwithLabels 
-          label="Password"
+          <TextInputwithLabels
+            label="Password"
             placehrolder="Enter your password"
             secureTextEntry={isvisible}
-            inputstyle={{marginTop:moderateScale(10)}}
+            inputstyle={{ marginTop: moderateScale(10) }}
             rightIcon={isvisible ? imagepath.HideEye : imagepath.Eye}
             onPressRight={() => setisvisible(!isvisible)}
             value={inputField?.password}
-            onchangeText={(val)=>changeHandler(val,'password')}
+            onchangeText={(val) => changeHandler(val, 'password')}
           />
-          {error.password ? (<Text style={{ color: colors.red}}>{error.password}</Text>) : null}
+          {error.password ? (<Text style={{ color: colors.red }}>{error.password}</Text>) : null}
           <TouchableOpacity activeOpacity={0.7}
             style={styles.forgotview} onPress={() => navigation.navigate(navigationStrings.FORGOTPASSWORD)}>
             <Text style={styles.forgotText}>Forgot Password ? </Text>
