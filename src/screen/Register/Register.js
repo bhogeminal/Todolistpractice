@@ -8,7 +8,7 @@ import navigationStrings from '../../constant/navigationStrings'
 import styles from './style'
 import imagepath from '../../constant/imagepath'
 import colors from '../../styles/colors'
-
+import { saveUserDataToStorage,getUserDataFromStorage } from '../../../storage/storage'
 const Register = ({ navigation }) => {
   const [isTrue, setisTrue] = useState(true)
   const [inputField, setinputField] = useState({
@@ -47,6 +47,7 @@ const Register = ({ navigation }) => {
     if (validate()) {
       navigation.navigate(navigationStrings.SETPASSWORD)
       console.log("navigation",navigation);
+      saveUserDataToStorage(inputField)
     }
     else{
       console.log("asa")
