@@ -5,7 +5,6 @@ import Authstack from './Authstack';
 import Homestack from './Homestack';
 
 const Routes = () => {
-  console.log("[[[[[[[[[[[[")
   return (
     <NavigationContainer>
 {false? Homestack():  Authstack()}

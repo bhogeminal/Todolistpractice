@@ -32,11 +32,11 @@ const Register = ({ navigation }) => {
     if (!inputField.DateBirth) ob.DateBirth = "Date of Birth is required"
     if (!inputField.Phone) ob.Phone = "Phone number is required"
     if (!inputField.Email) ob.Email = "Email is required"
-    if (!inputField.Password) ob.Password = "Password is required"
     if (!inputField.Country) ob.Country = "Country is required"
     if (!inputField.postalcode) ob.postalcode = "Postal code is required"
     if (!inputField.Address) ob.Address = "Address is required"
-    if (!inputField.Referral) ob.Address = "Referral is required"
+    if (!inputField.Referral) ob.Referral = "Referral is required"
+    console.log("Validation errors:", ob);
 
     seterror(ob)
     return Object.keys(ob).length === 0

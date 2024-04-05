@@ -53,7 +53,7 @@ const Login = ({ navigation }) => {
           {error.email ? (<Text style={{ color: colors.red }}>{error.email}</Text>) : null}
           <TextInputwithLabels
             label="Password"
-            placehrolder="Enter your password"
+            placeholder="Enter your password"
             secureTextEntry={isvisible}
             inputstyle={{ marginTop: moderateScale(10) }}
             rightIcon={isvisible ? imagepath.HideEye : imagepath.Eye}
