@@ -1,3 +1,5 @@
+import Editprofile from "../screen/Editprofile/Editprofile";
+
 export default{
     LOGIN:"Login",
     REGISTER:"Register",
@@ -9,5 +11,5 @@ export default{
     PROFILE:"profile",
     HOMESTACK:"Homestack",
     ADD:"add",
-    white:"white"
+    EDITPROFILE:"Editprofile"
 }
