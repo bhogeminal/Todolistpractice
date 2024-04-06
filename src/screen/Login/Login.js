@@ -7,6 +7,8 @@ import imagepath from '../../constant/imagepath'
 import Buttoncomp from '../../components/Buttoncomp'
 import navigationStrings from '../../constant/navigationStrings'
 import colors from '../../styles/colors'
+import { getUserDataFromStorage } from '../../../storage/storage'
+import { Screen } from 'react-native-screens'
 const Login = ({ navigation }) => {
   const [isvisible, setisvisible] = useState(true)
   const [inputField, setinputField] = useState({
@@ -24,13 +26,23 @@ const Login = ({ navigation }) => {
     return Object.keys(ob).length === 0;
 
   }
-  const handlesubmit = () => {
-    if (validate()) {
-      // Alert.alert("your name", JSON.stringify(inputField))
-      navigation.navigate(navigationStrings.HOMESTACK, { screen: navigationStrings.HOME });
-    }
+  // const handlesubmit = () => {
+  //   if (validate()) {
+  //     // Alert.alert("your name", JSON.stringify(inputField))
+  //     navigation.navigate(navigationStrings.HOMESTACK, { screen: navigationStrings.HOME });
+  //   }
 
-  }
+  // }
+  const handlesubmit = async () => {
+    if(validate()){
+    
+      // User data retrieved successfully, proceed with login
+      navigation.navigate(navigationStrings.HOMESTACK,{screen:navigationStrings.HOME})
+    } else {
+      console.log("No user data found");
+    }
+  
+  };
   const changeHandler = (value, field) => {
     console.log("value", value);
     setinputField({ ...inputField, [field]: value })

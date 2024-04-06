@@ -23,7 +23,9 @@ const Setpassword = ({ navigation }) => {
               onPressRight={()=>setisvisible(!isvisible)}
             />
           <Buttoncomp btnText={"Continue"}
-            onPress={() => navigation.navigate(navigationStrings.HOME)}
+            onPress={() =>  navigation.navigate(navigationStrings.HOMESTACK,{screen:navigationStrings.HOME})}
+
+           
             btnstyle={styles.btnstyle}
             img={imagepath.right}
           />
