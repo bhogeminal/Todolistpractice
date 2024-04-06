@@ -20,3 +20,12 @@ export const saveUserDataToStorage = async (userData) => {
       return null;
     }
   };
+ export const logout = async () => {
+    try {
+      // Clear user data from AsyncStorage and set user to null
+      await AsyncStorage.removeItem('user');
+      setUser(null);
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
+  };

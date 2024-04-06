@@ -1,42 +1,70 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { getUserDataFromStorage } from '../../../storage/storage';
-const Profile = () => {
+import imagepath from '../../constant/imagepath';
+const ProfileScreen = () => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    // Function to retrieve user data from AsyncStorage
-    const getUserData = async () => {
-      try {
-        const userDataFromStorage = await getUserDataFromStorage();
-        if (userDataFromStorage) {
-          // If user data exists in AsyncStorage, set it to state
-          setUserData(userDataFromStorage);
-        }
-        console.log("userDataFromStorage",userDataFromStorage)
-      } catch (error) {
-        console.error('Error retrieving user data:', error);
-      }
+    // Fetch user data when the component mounts
+    const fetchData = async () => {
+      const data = await getUserDataFromStorage();
+      setUserData(data);
     };
-
-    getUserData(); // Call the function to retrieve user data
+    fetchData();
   }, []);
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      {userData ? (
-        <>
-          <Text>User Profile</Text>
-          <Text>Username: {userData.username}</Text>
-          <Text>Email: {userData.Email}</Text>
-          {/* Display other user information as needed */}
-        </>
-      ) : (
-        <Text>No user data found.</Text>
-      )}
+    <View style={styles.container}>
+      <View style={styles.profileHeader}>
+        <Image source={imagepath.Profile} style={styles.profileImage} />
+        <Text style={styles.username}>{userData?.username}</Text>
+        <Text style={styles.email}>{userData?.Email}</Text>
+      </View>
+      <TouchableOpacity style={styles.editButton}>
+        <Text style={styles.editText}>Edit Profile</Text>
+      </TouchableOpacity>
+      {/* Add more profile details here */}
     </View>
   );
 };
 
-export default Profile;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 20,
+  },
+  profileHeader: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+  },
+  username: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  email: {
+    fontSize: 16,
+    color: 'gray',
+    marginTop: 5,
+  },
+  editButton: {
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  editText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+});
+
+export default ProfileScreen;
