@@ -46,7 +46,6 @@ const Register = ({ navigation }) => {
     console.log("Register button pressed");
     if (validate()) {
       navigation.navigate(navigationStrings.SETPASSWORD)
-      console.log("navigation",navigation);
       saveUserDataToStorage(inputField)
     }
     else{

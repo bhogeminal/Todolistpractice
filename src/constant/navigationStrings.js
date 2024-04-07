@@ -1,4 +1,3 @@
-import Editprofile from "../screen/Editprofile/Editprofile";
 
 export default{
     LOGIN:"Login",
