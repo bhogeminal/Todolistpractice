@@ -1,44 +1,51 @@
-import { StyleSheet } from "react-native";
-import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'react-native-size-matters';
-import colors from "../../styles/colors";
+import { StyleSheet } from 'react-native';
+import { moderateScale, moderateVerticalScale } from 'react-native-size-matters';
+import colors from '../../styles/colors';
 
 const styles = StyleSheet.create({
-    container: {
-        flex:1,
-        paddingHorizontal: moderateScale(24),
-        marginTop:moderateScale(64),
-    },
-// imgstyle:{marginRight:moderateScale(12),width:moderateScale(10),height:moderateScale(10)}
-   
-btnstyle:{
-width:moderateScale(56),
-height:moderateScale(56),
-borderRadius:moderateScale(56/2),
-alignSelf:"flex-end",
-marginTop:moderateVerticalScale(30)
-
-}
-// headingText: {
-    //     fontSize: scale(24),
-    //     textTransform: 'uppercase',
-    //     fontWeight: 'bold',
-    //     textAlign: 'center'
-    // },
-    // imgStyle: {
-    //     width: moderateScale(160),
-    //     height: moderateScale(160)
-    // },
-    // textStyle: {
-    //     fontSize: scale(20),
-    //     fontWeight: '400',
-    //     marginTop: moderateVerticalScale(16)
-    // },
-    // bottomView: {
-    //     flexDirection: 'row',
-    //     alignItems: 'center',
-    //     marginTop: moderateVerticalScale(24)
-    // }
-
+  container: {
+    flex: 1,
+    paddingHorizontal: moderateScale(24),
+    marginTop: moderateVerticalScale(64),
+  },
+  contentContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  lockIconContainer: {
+    alignItems: 'center',
+    marginBottom: moderateVerticalScale(30),
+  },
+  lockIconText: {
+    fontSize: moderateScale(24),
+    fontWeight: 'bold',
+  },
+  textContainer: {
+    alignItems: 'center',
+    marginBottom: moderateVerticalScale(30),
+  },
+  title: {
+    fontSize: moderateScale(20),
+    fontWeight: 'bold',
+    marginBottom: moderateVerticalScale(10),
+  },
+  subtitle: {
+    fontSize: moderateScale(14),
+    fontWeight: '600',
+    color: colors.grayText,
+  },
+  inputContainer: {
+    marginBottom: moderateVerticalScale(30),
+  },
+  buttonContainer: {
+    alignItems: 'center',
+  },
+  sendButton: {
+    width: moderateScale(120),
+    height: moderateVerticalScale(50),
+    borderRadius: moderateScale(25),
+    backgroundColor: colors.primary,
+  },
 });
 
-export default styles
+export default styles;
