@@ -1,68 +1,61 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { getUserDataFromStorage, saveUserDataToStorage } from '../../../storage/storage';
-
-const Editprofile = () => {
+import styles from './style';
+const EditProfile = () => {
     const [userData, setUserData] = useState({
         username: '',
-        Email: '',
+        email: '',
         // Add other fields as needed
     });
+
     useEffect(() => {
-        fetchdata()
-    }, [])
-    const fetchdata = async() => {
-        const data =await getUserDataFromStorage();
-        console.log("/////",data)
-        if(data && data.username){
-            try {
-                setUserData(data)
-                console.log("userdata", userData)
-            }
-            catch (error) {
-                console.log(error)
-            }
-        }
-       else{
-        console.log("userdata is null")
-       }
-       
+        fetchUserData();
+    }, []);
 
+    const fetchUserData = async () => {
+        try {
+            const data = await getUserDataFromStorage();
+            if (data && data.username) {
+                setUserData(data);
+            } else {
+                console.log("User data not found");
+            }
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
     }
+
     const handleUpdateProfile = async () => {
-        try{
-        const data=    await saveUserDataToStorage()
-            setUserData(data)
-            console.log(userData)
+        try {
+            await saveUserDataToStorage(userData);
+            console.log("User data updated successfully");
+        } catch (error) {
+            console.error("Error updating user data:", error);
         }
-      catch(error){
-console.error(error)
-      }
-
     }
+
     return (
-        <View>
-            <Text>Edit Profile</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Edit Profile</Text>
             <TextInput
+                style={styles.input}
                 placeholder="Username"
                 value={userData?.username}
                 onChangeText={(text) => setUserData({ ...userData, username: text })}
             />
             <TextInput
+                style={styles.input}
                 placeholder="Email"
-                value={userData?.Email}
-                onChangeText={(text) => setUserData({ ...userData, Email: text })}
+                value={userData?.email}
+                onChangeText={(text) => setUserData({ ...userData, email: text })}
             />
             {/* Add other input fields for additional user data */}
-            <TouchableOpacity onPress={handleUpdateProfile}>
-                <Text>Save Changes</Text>
+            <TouchableOpacity style={styles.button} onPress={handleUpdateProfile}>
+                <Text style={styles.buttonText}>Save Changes</Text>
             </TouchableOpacity>
         </View>
     );
 };
 
-
-
-export default Editprofile
-
-const styles = StyleSheet.create({})
+export default EditProfile

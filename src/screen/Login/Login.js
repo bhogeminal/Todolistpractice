@@ -7,8 +7,7 @@ import imagepath from '../../constant/imagepath'
 import Buttoncomp from '../../components/Buttoncomp'
 import navigationStrings from '../../constant/navigationStrings'
 import colors from '../../styles/colors'
-import { getUserDataFromStorage } from '../../../storage/storage'
-import { Screen } from 'react-native-screens'
+
 const Login = ({ navigation }) => {
   const [isvisible, setisvisible] = useState(true)
   const [inputField, setinputField] = useState({
