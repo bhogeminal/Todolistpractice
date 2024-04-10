@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { getUserDataFromStorage, saveUserDataToStorage } from '../../../storage/storage';
 import styles from './style';
-const EditProfile = () => {
+import navigationStrings from '../../constant/navigationStrings';
+const EditProfile = ({navigation}) => {
     const [userData, setUserData] = useState({
         username: '',
         email: '',
@@ -30,6 +31,7 @@ const EditProfile = () => {
         try {
             await saveUserDataToStorage(userData);
             console.log("User data updated successfully");
+            navigation.navigate(navigationStrings.HOME)
         } catch (error) {
             console.error("Error updating user data:", error);
         }
