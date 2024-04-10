@@ -37,9 +37,9 @@ const styles = StyleSheet.create({
   inputContainer: {
     marginBottom: moderateVerticalScale(30),
   },
-  buttonContainer: {
-    alignItems: 'center',
-  },
+  // buttonContainer: {
+  //   alignItems: 'center',
+  // },
   sendButton: {
     width: moderateScale(120),
     height: moderateVerticalScale(50),
